@@ -1,0 +1,171 @@
+/*************************************************
+                    Mostly Fluid Pattern
+                    ---------------------
+    - On mobile screens the columns are stacked on
+    top of each other.
+    - As the screen size increases beyond a breakpoint
+    the columns are unstacked and the layout remains same
+    for higher screen sizes. Only the screen margins and
+    content/image sizes increase. 
+    - Mostly there is only one breakpoint.
+
+                    Implementation
+                    --------------
+    The columns are created using bootstrap.(see HTML file)
+
+    -Features and Subscribe sections are three column on large screen.
+        They collapse into single column when the screen size is 
+        below 768px.
+    -Hero and Contact sections are two column on large screen.
+        They collapse into single column below 768px.
+    -Plans and Editors sections are four column on large screen.
+        They collapse into single column below 768px.
+
+*/
+
+
+/********************************************
+             Font Colors 
+*/
+
+#hero,
+#why,
+#email,
+#features,
+#plans,
+#editors,
+.nav-item,
+.navbar-brand,
+.fab{
+    color: #24665e !important;
+}
+
+.fab:hover,
+#main-footer .fab:hover{
+    color: black !important;
+}
+
+#main-footer .fab{
+    color: white !important;
+}
+
+/************************************
+            Background Colors 
+*/
+
+/* Set background colors for alternate sections */
+#hero,
+#why,
+#plans,
+#plans .card-body{
+    background-color: rgba(116, 192, 168, 0.247);
+}
+
+#email{
+    background-color:#43b3ae;
+}
+
+.btn-color,
+#main-footer{
+    background-color: #24665e;
+}
+
+/******************************************
+            Other settings
+*/
+
+/* Provide border around plan section items */
+#plans .card-border{
+    border: 2px solid #24665e !important;
+    
+}
+
+/* Provide space above and below content in each section */
+section{
+    padding: 2em 0;
+}
+
+/* Provide space to accomodate Top Nav above hero section on small screen */
+.sticky-nav-margin{
+    margin-top: 3.5rem;
+}
+
+/* Set website logo size */
+.logo{
+    height: auto;
+    width: 50px;
+}
+
+/* Remove blue border around hamburger icon*/
+button:focus{
+    outline:0;
+}
+
+/* Provide line after each section heading */
+.heading:after {
+    display: block;
+    content: " ";
+    height: 2px;
+    width: 5em;
+    background-color: #24665e;
+    margin: 0.5em auto 1em auto;
+}
+
+/* Provide white color line under Contact section heading */
+#main-footer .heading:after{
+    background-color: white;
+}
+
+/* Highlight dropdown menu items on hover */
+.navbar-nav a:hover{
+    background-color: #24665e !important;
+    color: white !important;
+}
+
+/* Strectch the nav item vertically to full height of Nav Top*/
+.nav-item{
+    line-height: 2.75em;
+}
+
+
+/************************************ 
+            Font Sizes
+*/
+html{
+    font-size: 0.8rem;
+}
+
+/* This class is used in editors section and Copyright */
+.small-text{
+    font-size: 0.8rem;
+}
+
+/* Adjust bootstrap class font size for smaller screens*/
+.display-2{
+    font-size: 2.5rem;
+}
+
+@media (min-width: 576px) {
+    html {
+        font-size: 1rem;
+    }
+
+    /* Adjust bootstrap class font size for medium screens*/
+    .display-2{
+        font-size: 3rem;
+    }
+}
+
+@media (min-width: 768px){
+
+    /* Remove border below feature items as they are horizontally
+        arranged on large screens */
+    #features .border-bottom{
+        border-bottom: 0 !important;
+    }
+
+
+}
+
+
+

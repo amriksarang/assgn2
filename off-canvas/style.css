@@ -1,0 +1,365 @@
+/**
+    The smallest screen size for this off-canvas design 
+    is assumed to be 286px.
+*/
+
+
+/**
+                Off Canvas Pattern
+                ------------------
+    On small screens, to account for reduced space, some part 
+    of the content is removed from viewport, while remaining
+    content is stacked. The content removed from viewport
+    can be accessed with a click of a button.
+
+                Implementation
+                --------------
+    -The Hero and Contact sectios are divided into two columns on
+        large screens. Below 992px Contact section is taken off screen.
+        It can be accessed via contact icon in top menu.
+        The H section is still two column. Below 786px Hero Section
+        columns are stacked into single column.
+    -Below 992px the top navigation links are taken off screen and can be 
+        accessed using hamburger icon in Top nav.
+    -The Subscribe section is arranged into three columns on large screens.
+        Below 992px it is removed off-screen and can be accessed
+        by clicking on contact icon in top nav.
+    -The Features section occupies three columns on large screens.
+        Below 768px the columns are stacked into a single column.
+    -Plans and Editors section has four columns each on large screens.
+        Below 768px the sections are re-organised into single column.
+*/
+
+/**
+    ********** Font Colors **************
+*/
+
+#hero,
+#why,
+#features,
+#plans,
+#editors,
+.fab{
+    color: #24665e !important;
+}
+
+.fab:hover,
+#contact .fab:hover{
+    color: black !important;
+}
+
+#contact .fab{
+    color: white !important;
+}
+
+#subscribe{
+    color: white;
+}
+
+/**
+    ********** Background Colors **************
+*/
+
+/* Set background colors for alternate sections */
+#hero,
+#why,
+#plans{
+    background-color: rgba(116, 192, 168, 0.247);
+}
+
+.btn-color,
+#contact{
+    background-color: #24665e;
+}
+
+#subscribe .heading::after{
+    background-color: white;
+}
+
+/**
+    ********** Font Sizes *****************
+*/
+
+.small-text{
+    font-size: 0.8rem;
+}
+
+.display-2{
+    font-size: 3rem;
+}
+
+html{
+    font-size: 0.8rem;
+}
+
+/**
+    ********** Other settings **************
+*/
+
+/*  Dummy header is a div used to distinguish between
+    large and small screens to adjust the menu background
+    and font color accordingly. It is also used to limit the 
+    trigger of side-menu collapse (on clicking a link in 
+    side-menu) on small screens only.
+*/
+.dummy-header{
+    width: 320px;
+}
+
+/* Provide border around the four columns of Plans section */
+#plans .card-border{
+    border: 2px solid #24665e !important;    
+}
+
+/* Provide space around content in each section */
+section{
+    padding: 2em 0;
+}
+
+/* Set the website logo size*/
+.logo-img{
+    width: 50px;
+    height: auto;
+    text-align: right;
+}
+
+/* Remove blue border from hamburger side menu icon 
+    shown on small screen*/
+button:focus{
+    outline:0;
+}
+
+/* Provide space above hero section to accomodate Top Navigation */
+#hero{
+    margin-top: 4em;
+}
+
+/**
+    ********** Top Navigation and Side Menu ***********
+*/
+
+/*  Sticky Top navigation for small screens.
+    This is the place where icons for Side menu,
+    Contact section and Subscribe section are placed.
+
+*/
+.menu-control{
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top: 0;
+    height: 4em;
+    z-index: 555;
+    width: 100%;
+}
+
+/* Styling and spacing top menu icons*/
+.menu-control a{
+    padding: 0 1em;
+    text-decoration: none;
+    color: #24665e;
+}
+
+/*  Make Side menu, Subscribe and Contact section off-canvas */
+.side-menu,
+#subscribe,
+#contact{
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    width: 266px;  /* Smallest screen width is assumed to be 286px */
+    height: 100%;
+    background-color:#43b3ae;    
+    z-index: 555;   /* Keep these sections above other content so */
+    padding-top: 5em; /* that they overlap on the other content */
+}
+
+/* The side menu anchor link text is centered
+    vertically and horizontally. Addtionally
+    styling and border is also applied*/
+.side-menu a{
+    display: flex;
+    padding: 0 2em;
+    text-decoration: none;
+    color: white;
+    align-items: center; /* Center text inside links vertically */
+    height: 4em;
+    border-bottom: 1px solid white;
+}
+
+/* Highlight Side Menu item when it is hovered over */
+.side-menu a:hover{
+    background-color: #24665e;
+    color: white;
+}
+
+/* Provide border on top of first item in Side Menu */
+.side-menu a:first-child{
+    border-top: 1px solid white;
+}
+
+/* Remove side menu items that are already accessible via 
+    Top-menu icons*/
+.subscribe-link,
+.contact-link{
+    display: none !important;  
+}
+
+/* This is the close icon shown above the offscreen sections
+    when they slide into viewport. The user can hide them
+    again by clicking on it.*/
+.close-side-menu-icon{
+    display: none;
+    position: fixed;
+    left: 200px;
+    top: 10px;
+    padding: 0 2em;
+    color: white;
+    z-index: 9999 !important; /* keep close icon above side-menu, */
+}                               /* contact and subscibe sections */
+
+/**
+    ************Headings ***************
+ */
+
+ /* Section heading are underlined */
+.heading::after{
+    display: block;
+    content: " ";
+    height: 2px;
+    width: 20%;
+    margin: 0 auto;
+    margin-top: 0.4em;
+    margin-bottom: 1em;
+    background-color: white;
+}
+
+/* Use different color for underline for Editor,
+Plans and Features sections*/
+#editors .heading::after,
+#plans .heading::after,
+#features .heading::after{
+    background-color: #24665e;
+}
+
+
+@media (min-width: 576px) {
+    html {
+        font-size: 1rem;
+    }
+
+    /* Increase the font size in bootstrap close on larger screens*/
+    .display-2{
+        font-size: 4rem;
+    }
+}
+
+@media (min-width: 768px){
+
+    /* Increase the font size in bootstrap close on larger screens*/
+    .display-2{
+        font-size: 5.5rem;
+    }
+
+    /* Remove bottom border for large screens in feature sections
+        where content is shown in a single row */
+    #features .border-bottom{
+        border-bottom: 0 !important;
+    }
+
+}
+
+@media (min-width: 992px) {
+
+    /* Increase dummy header size for large screen.
+        For explanation of its use, see mobile section above*/
+    .dummy-header{
+        width: 992px;
+    }
+
+    /* Align website logo on large screens on left side*/
+    .logo-img{
+        text-align: left;
+    }
+
+    /* Sticky Top Navigation Bar for large screens*/
+    .nav-bar{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        position: fixed;
+        top:0;
+        width: 100%;
+        background-color: white;
+        z-index: 100; /* Keep the sticky nav above other page content */
+        border-bottom: 1px solid rgb(165, 163, 163);
+    }
+
+    /* Display Subscribe and Contact Sections that were 
+       off-canvas on small screen */
+    #subscribe,
+    #contact{
+        display: block !important;
+        position: static;  /* Bring these section back to the default*/
+        width: auto;        /*  normal flow of elements in browser */
+    }
+
+    /* Hide Off-Canvas control buttons in Top menu */
+    .side-menu-icon,
+    .subscribe-icon,
+    .contact-icon{
+        display: none;
+    }
+
+    /* Hide close icon that was used on small screen to hide 
+        offscreen sections */
+    .close-side-menu-icon{
+        display: none !important;
+    }
+
+    /* Convert Side Menu to Top Menu*/
+    .side-menu{
+        position: static;
+        display: flex !important;
+        flex-direction: row !important;
+        width: auto;
+        padding: 0;
+        background-color: transparent;
+    }
+
+    /* Convert state of sticky top menu, that contained icons for 
+        accessing offscreen sections, to default flow of elements
+        in browser  */
+    .menu-control{
+        position: static;
+        height: auto !important;
+    }
+
+    /* Remove border of nav link items, as now they are horizontally
+        arranged*/
+    .side-menu a{
+        border: 0 !important;
+        color: #24665e;
+    }
+
+    /* Re-style Subscribe section for large screen */
+    #subscribe{
+        color: #24665e;
+        background-color: white;
+        padding: 2em 0;
+    }
+
+    /* Change color of underline of subscribe section*/
+    #subscribe .heading::after{
+        background-color: #24665e;
+    }
+
+    /* Add subscribe and contact navigation links back to top menu */
+    .subscribe-link,
+    .contact-link{
+        display: flex !important;
+    }
+}
+
