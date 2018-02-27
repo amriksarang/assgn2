@@ -1,0 +1,269 @@
+/*****************************************
+                Layout Shifter Pattern
+                ----------------------
+    In small screen the columns are vertically stacked.
+    As the screen size is increased there are several changes 
+    in the layout, content is rearranged considerably.
+
+                    Implementation
+                    --------------
+    -Hero section is the area where the content layout
+        changes significantly. This section has three sections
+        clubbed together: Hero, 'Why this Journal' and Subscribe.
+        A left side navigation in form of tile sized buttons is
+        also shown. Overall the layout can be considered as four
+        columns in a single row.
+        
+        All of above is shown together in a single row on large
+        screens.
+        
+        Below 992px screen size, the four column view changes to two
+        column view.  'Why this Journal' section drops
+        below to next row. The side navigation is moved to top
+        of the page.
+
+        Below 768px The subscribe section is also moved to next row.
+        The hero image and text are also broken into two stacked columns.
+    -The Plans and Editors sections are arranged in four columns
+        on large screen. Below 992px they are broken into three column
+        in one row and one remaining column in next row. Next
+        breakpoints are 768px and 576px where one column each is dropped
+        to next row.
+    -The Features section content is shown in three columns on large
+        screen. Below 768px one column is dropped to next row. Below 576px
+        another column is dropped to next row. Thus now all three
+        columns are stacked and layout is now single column.         
+    -The contact section is shown as two column on large screen.
+        Below 786px the columns are stacked to form single column
+        layout.       
+    
+*/
+
+
+/*****************************************
+            Font Sizes
+*/
+
+/* Small text is used in Editors section and Copyright section */
+.small-text{
+    font-size: 0.8rem;
+}
+
+html{
+    font-size: 0.8rem;
+}
+
+@media (min-width: 576px) {
+    html {
+        font-size: 1rem;
+    }
+}
+
+/*****************************************
+            Font Colors 
+*/
+
+#hero,
+#features,
+#plans,
+#editors,
+.nav-item,
+.menu-items,
+.navbar-brand,
+.fab{
+    color: #24665e !important;
+}
+
+.fab:hover,
+#main-footer .fab:hover{
+    color: black !important;
+}
+
+#main-footer .fab{
+    color: white !important;
+}
+
+/*****************************************
+         Background Colors 
+*/
+
+#hero,
+#plans{
+    background-color: rgba(116, 192, 168, 0.247);
+}
+
+.btn-color,
+#main-footer{
+    background-color: #24665e;
+}
+
+#main-footer .heading::after{
+    background-color: white;
+}
+
+.nav-item:hover{
+    background-color: #43b3ae;
+    color: white !important;
+}
+
+/*****************************************
+     Other settings 
+*/
+
+/* Space at top and bottom of content in each section  */
+section{
+    padding: 2em 0;
+}
+
+/* Set website logo size */
+.logo{
+    height: auto;
+    width: 50px;
+}
+
+/* Provide margin above hero section for accomodating 
+    top navigation in small screen */
+#hero{
+    margin-top: 3.75em;
+}
+
+/* Remove blue border arround hamburger menu icon */
+button:focus{
+    outline:0;
+}
+
+/* Border below each nav item in dropdown navigation*/
+.nav-item{
+    border-bottom: 1px solid #24665e;
+}
+
+/* Underline all sections headings */
+.heading::after{
+    display: block;
+    content: " ";
+    height: 2px;
+    width: 20%;
+    margin: 0 auto;
+    margin-top: 0.4em;
+    margin-bottom: 0.8em;
+    background-color: #24665e;
+}
+
+/* the Plan section has four boxes with a border around them. */
+#plans .card-border{
+    border: 2px solid #24665e !important;
+}
+
+/* Hide the website logo in the side note section.
+    The logo in site note section is displayed only
+    on large screen */
+.side-note .logo{
+    display: none !important;
+}
+
+
+
+@media (min-width: 768px){
+
+    /* In small screens a 'bottom border' is shown below
+        each of three features that are stacked vertically.
+        But its not required in large screens as features 
+        are aligned horizontally. */
+    #features .border-bottom{
+        border-bottom: 0 !important;
+    }
+}
+
+@media (min-width: 992px) {
+
+    /* Remove the space that was allocated for top nav in small screen */
+    #hero{
+        margin-top: 0;
+    }
+    
+    /* Set page heading 'M Journal' size for small and medium screens. */
+    .page-heading{
+        font-size: 2rem;
+    }
+
+    /* Remove the line that was shown under under nav items in dropdown 
+        menu on small screen. The dropdown is converted to horizontal 
+        top menu on large screen */
+    .nav-item{
+        border-bottom: 0;
+    }
+
+    /* Remove hover background color effect for top menu nav items.
+        This effect was created for small screens */
+    .nav-item:hover{
+        background-color: transparent !important;
+        color:#bbbbbb !important;
+    }
+
+    /*****************************************
+         Navigation items (big squares) on left side 
+         of screen refered to as "Nav Tiles". These are 
+         shown only on large screen. 
+    */
+    .nav-tiles{
+        background-color: white;
+    }
+
+    /* These are items inside "Nav Tiles" */
+    .menu-items{
+        display: table;
+        height: 100%;
+        width: 100%;
+        text-decoration: none !important;
+    }
+
+    .menu-items span{
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    /* Change hover background color for items inside "Nav Tiles" */
+    .menu-items:hover{
+        background-color: #24665e;
+        color: white !important;
+    }
+
+    /* Side note is displayed on right side of screen (in small
+        font) on large scren. */
+    .side-note{
+        font-size: 0.8rem;
+    }
+
+    .side-note h2{
+        font-size: 1rem;
+        margin-left: 0;
+    }
+
+    .side-note p{
+        margin-left: 0;
+    }
+
+    .side-note .logo{
+        display: inline !important;
+    }
+}
+
+@media (min-width: 1200px){
+
+    /* Increase page heading 'M Journal' font size  */
+    .page-heading{
+        font-size: 4rem;
+    }
+
+    /* Provide some extra margins for side note 
+        (small text shown on right side) on larger screens*/
+    .side-note h2{
+        margin-left: 10px;
+    }
+    .side-note p{
+        margin-left: 10px;
+    }    
+
+}
+
